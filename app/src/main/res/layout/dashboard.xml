@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/button_decDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:onClick="decDateClicked" />
+
+        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/text_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="today" />
+
+        <Button xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/button_incDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:onClick="incDateClicked" />
+
+    </LinearLayout>
+
+    <Button xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/button_addNutritionEntry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sample: Eintragen\n1234 kCal"
+        android:onClick="addNutritionEntryClicked" />
+
+    <Button xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/button_showSaldo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sample: Verfügbar\n3321 kCal"
+        android:onClick="showSaldoClicked" />
+
+    <Button xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/button_addActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sample: Aktivitaet\n 228 kCal"
+        android:onClick="addActivityClicked" />
+
+    <ListView
+        android:id="@+id/nutritionEntryList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
+
+    </LinearLayout>
