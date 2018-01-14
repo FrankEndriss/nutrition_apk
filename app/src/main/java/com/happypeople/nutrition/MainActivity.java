@@ -107,16 +107,15 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) convertView.findViewById(R.id.nleName))
                 .setText(entry.getFood().getName());
         ((TextView) convertView.findViewById(R.id.nleAmount))
-                .setText(""+entry.getGrams());
+                .setText(""+entry.getGrams()+"g");
         ((TextView) convertView.findViewById(R.id.nleKcal))
-                .setText(""+entry.getKcal());
+                .setText(""+entry.getKcal()+"kCal");
         ((TextView) convertView.findViewById(R.id.nleFat))
-                .setText(""+entry.getFatGrams());
+                .setText(String.format("%.1f", entry.getFatGrams())+"g");
         ((TextView) convertView.findViewById(R.id.nleCarbo))
-                .setText(""+entry.getCarboGrams());
+                .setText(String.format("%.1f", entry.getCarboGrams())+"g");
         ((TextView) convertView.findViewById(R.id.nleProtein))
-                .setText(""+entry.getProteinGrams());
-
+                .setText(String.format("%.1f", entry.getProteinGrams())+"g");
         return convertView;
     }
 
@@ -144,6 +143,30 @@ public class MainActivity extends AppCompatActivity {
         listAdapterModel.clear();
         listAdapterModel.addAll(getApp().getDataRepository().getNutritionListEntries(currentDate.getTime()));
         nutritionListAdapter.notifyDataSetChanged();
+        updateSumFields(listAdapterModel);
+    }
+
+    private void updateSumFields(final List<NutritionListEntry> nutritionListEntries) {
+       int sumCkal=0;
+       double sumFat=0.0;
+       double sumCarbo=0.0;
+       double sumSugar=0.0;
+       double sumProtein=0.0;
+       for(NutritionListEntry entry : nutritionListEntries) {
+           sumCkal+=entry.getKcal();
+           sumFat+=entry.getFatGrams();
+           sumCarbo+=entry.getCarboGrams();
+           sumProtein+=entry.getProteinGrams();
+           sumSugar+=entry.getSugarGrams();
+       }
+       final TextView sumKcalField=(TextView)findViewById(R.id.sumkcal);
+       sumKcalField.setText(""+sumCkal+"kCal");
+        final TextView sumFatField=(TextView)findViewById(R.id.sumfat);
+        sumFatField.setText(String.format("%.1f", sumFat)+"g");
+        final TextView sumCarboField=(TextView)findViewById(R.id.sumcarbo);
+        sumCarboField.setText(String.format("%.1f", sumCarbo)+"g");
+        final TextView sumProteinField=(TextView)findViewById(R.id.sumprotein);
+        sumProteinField.setText(String.format("%.1f", sumProtein)+"g");
     }
 
     @Override

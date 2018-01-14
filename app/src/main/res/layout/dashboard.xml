@@ -56,6 +56,61 @@
         android:text="sample: Aktivitaet\n 228 kCal"
         android:onClick="addActivityClicked" />
 
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="1"
+        android:columnCount="5"
+        >
+        <Space />
+        <TextView
+            android:id="@+id/sumkcal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:paddingLeft="10dip"
+            android:textSize="16dip"
+            android:textStyle="bold"
+            android:text="499kCal" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/sumfat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:paddingLeft="10dip"
+            android:textSize="16dip"
+            android:textStyle="bold"
+            android:text="117,3g" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/sumcarbo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="3"
+            android:paddingLeft="10dip"
+            android:textSize="16dip"
+            android:textStyle="bold"
+            android:text="168,5g" >
+        </TextView>
+        <TextView
+            android:id="@+id/sumprotein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="4"
+            android:paddingLeft="10dip"
+            android:textSize="16dip"
+            android:textStyle="bold"
+            android:text="116,2g" >
+        </TextView>
+    </GridLayout>
+
     <ListView
         android:id="@+id/nutritionEntryList"
         android:layout_width="match_parent"

@@ -1,0 +1,19 @@
+
+TODO 2018-01-14:
+/# Hauptscreen, Liste mittels Grid-Layout Tabellarisch machen
+/# Hauptscreen, Liste Float-Format-Ausgabe
+/# Hauptscreen, Liste Einheiten für die Zahlenwerte
+/# Hauptscreen, Liste Summenfelder
+#Wenn die Summen==0 sind weil keine Einträge existieren, nicht anzeigen
+# Hauptscreen, Buttons so anordnen das sie weniger Platz benötigen
+...
+
+
+Bschreibung der App:
+
+Hauptsceen, Elemente:
+-Datumseinstellung "aktuelles Datum", initial heute
+-Button "Mahlzeit eintragen"
+-Button "Statistiken"
+-Button "Aktivität eintragen"
+-Liste "aktuelles Datum" bereits eingetragen
