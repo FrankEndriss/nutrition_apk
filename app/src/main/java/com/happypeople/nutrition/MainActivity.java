@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final String uuid= UUID.randomUUID().toString();
+        final String uuid = UUID.randomUUID().toString();
 
         // setup the database
         initDB();

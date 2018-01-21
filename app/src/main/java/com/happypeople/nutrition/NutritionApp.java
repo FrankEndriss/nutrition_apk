@@ -15,7 +15,7 @@ import com.happypeople.nutrition.persistence.DataRepository;
  */
 public class NutritionApp extends Application implements NutritionAppContext {
 
-    private DataRepository dataRepository=new DataRepository();
+    private DataRepository dataRepository = new DataRepository();
 
     @Override
     public DataRepository getDataRepository() {

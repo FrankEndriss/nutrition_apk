@@ -1,9 +1,7 @@
 package com.happypeople.nutrition;
 
-import android.icu.util.Calendar;
-import android.icu.util.GregorianCalendar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -21,28 +19,36 @@ import com.happypeople.nutrition.persistence.DataRepository;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class EditNutritionEntryActivity extends AppCompatActivity {
 
-    /** Adapter for List of search results while
+    /**
+     * Adapter for List of search results while
      * entering a nutrition.
      */
     private ArrayAdapter<Food> nutritionSearchResultAdapter;
 
-    /** Food entered/selected while current editing */
+    /**
+     * Food entered/selected while current editing
+     */
     private Food selectedFood;
 
-    /** TextView für Menge-Eingabe */
+    /**
+     * TextView für Menge-Eingabe
+     */
     private TextView amountTextView;
 
-    /** TextView für Food-Eingabe */
+    /**
+     * TextView für Food-Eingabe
+     */
     private TextView nutritionTextView;
 
-    /** saveButton, activ-state is switched */
+    /**
+     * saveButton, activ-state is switched
+     */
     private Button saveButton;
 
     @Override
@@ -61,31 +67,31 @@ public class EditNutritionEntryActivity extends AppCompatActivity {
 
         // initialize the list to display searched/found items while
         // editing the field nutrition
-        final List<Food> listAdapterModel=new ArrayList<Food>();
+        final List<Food> listAdapterModel = new ArrayList<Food>();
 
         nutritionSearchResultAdapter = new ArrayAdapter<>(
-                        this,
-                        R.layout.nutrition_search_result_list_view_item,
-                        R.id.nutrition_search_result_list_view_i,
-                        listAdapterModel);
+                this,
+                R.layout.nutrition_search_result_list_view_item,
+                R.id.nutrition_search_result_list_view_i,
+                listAdapterModel);
 
-        final ListView listView=(ListView)findViewById(R.id.nutritionSearchResultListView);
+        final ListView listView = (ListView) findViewById(R.id.nutritionSearchResultListView);
         listView.setAdapter(nutritionSearchResultAdapter);
 
-        final TextView foodEnterTextView=(TextView)findViewById(R.id.edit_food);
+        final TextView foodEnterTextView = (TextView) findViewById(R.id.edit_food);
         // click listener for above list. On click, the clicked food is
         // set as the selected food
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectedFood=nutritionSearchResultAdapter.getItem(position);
+                selectedFood = nutritionSearchResultAdapter.getItem(position);
                 foodEnterTextView.setText(selectedFood.getName());
-                amountTextView.setText(""+selectedFood.getDefaultAmount());
+                amountTextView.setText("" + selectedFood.getDefaultAmount());
                 checkAndSetSaveButtonState();
             }
         });
 
-        amountTextView=(TextView)findViewById(R.id.edit_menge);
+        amountTextView = (TextView) findViewById(R.id.edit_menge);
         amountTextView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -102,22 +108,22 @@ public class EditNutritionEntryActivity extends AppCompatActivity {
                 // ignore
             }
         });
-        saveButton=(Button)findViewById(R.id.button_save);
-        saveButton.setOnClickListener(new Button.OnClickListener()  {
+        saveButton = (Button) findViewById(R.id.button_save);
+        saveButton.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onSaveClicked(v);
             }
         });
-        final Button cancelButton=(Button)findViewById(R.id.button_cancel);
-        cancelButton.setOnClickListener(new Button.OnClickListener()  {
+        final Button cancelButton = (Button) findViewById(R.id.button_cancel);
+        cancelButton.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onCancelClicked(v);
             }
         });
 
-        nutritionTextView=(TextView)findViewById(R.id.edit_food);
+        nutritionTextView = (TextView) findViewById(R.id.edit_food);
         nutritionTextView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -131,8 +137,8 @@ public class EditNutritionEntryActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                final String query=nutritionTextView.getText().toString();
-                if(query==null || query.length()==0)
+                final String query = nutritionTextView.getText().toString();
+                if (query == null || query.length() == 0)
                     return;
 
                 // TODO do this async
@@ -157,19 +163,19 @@ public class EditNutritionEntryActivity extends AppCompatActivity {
      * @return the entered amount or null if nothing usefull available
      */
     private BigDecimal getAmount() {
-        final String str=amountTextView.getText()
+        final String str = amountTextView.getText()
                 .toString()
                 .replace(',', '.');
         try {
             return new BigDecimal(str);
-        }catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             // TODO show kind of error message...make field text red
             return null;
         }
     }
 
     private void checkAndSetSaveButtonState() {
-        final boolean enabled=selectedFood!=null && getAmount()!=null;
+        final boolean enabled = selectedFood != null && getAmount() != null;
         saveButton.setEnabled(enabled);
     }
 
@@ -178,19 +184,19 @@ public class EditNutritionEntryActivity extends AppCompatActivity {
         super.onResume();
         // set time to current hour
         final Spinner spinner = (Spinner) findViewById(R.id.spinner_time);
-        final int index=Integer.parseInt(new SimpleDateFormat("HH").format(new Date()));
+        final int index = Integer.parseInt(new SimpleDateFormat("HH").format(new Date()));
         spinner.setSelection(index);
 
         // all other fields empty
     }
 
     public void onSaveClicked(final View view) {
-        final Food food=selectedFood;
-        final BigDecimal amount=getAmount();
-        if(food==null || amount==null)
-            throw new IllegalStateException("some data is null: food="+food+" amount="+amount);
+        final Food food = selectedFood;
+        final BigDecimal amount = getAmount();
+        if (food == null || amount == null)
+            throw new IllegalStateException("some data is null: food=" + food + " amount=" + amount);
 
-        final NutritionListEntry entry=new NutritionListEntry(
+        final NutritionListEntry entry = new NutritionListEntry(
                 new Date(), food, new FoodAmount(amount.intValue(), FoodAmount.FoodUnit.GRAM));
 
         // persist the data
@@ -206,6 +212,6 @@ public class EditNutritionEntryActivity extends AppCompatActivity {
     }
 
     private NutritionAppContext getApp() {
-        return (NutritionAppContext)getApplicationContext();
+        return (NutritionAppContext) getApplicationContext();
     }
 }

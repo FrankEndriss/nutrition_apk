@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -14,8 +13,8 @@
     -->
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/text_date"
-        android:layout_gravity="left|top"
         android:layout_columnSpan="2"
+        android:layout_gravity="left|top"
         android:text="2017-10-04" />
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -25,10 +24,9 @@
 
     <Spinner xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/spinner_time"
-        android:layout_gravity="left|center"
         android:layout_width="60pt"
-        android:text="time"
-        />
+        android:layout_gravity="left|center"
+        android:text="time" />
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/label_food"
@@ -37,10 +35,9 @@
 
     <EditText xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/edit_food"
-        android:layout_gravity="left|center"
         android:layout_width="120pt"
-        android:text="Lebensmittel Name"
-        />
+        android:layout_gravity="left|center"
+        android:text="Lebensmittel Name" />
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/label_menge"
@@ -49,32 +46,31 @@
 
     <EditText xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/edit_menge"
-        android:layout_gravity="left|center"
         android:layout_width="60pt"
-        android:text=""
-        />
+        android:layout_gravity="left|center"
+        android:text="" />
 
     <Button
         android:id="@+id/button_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Speichern"
-        android:onClick="onSaveClicked" />
+        android:onClick="onSaveClicked"
+        android:text="Speichern" />
+
     <Button
         android:id="@+id/button_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Abbruch"
-        android:onClick="onCancelClicked" />
+        android:onClick="onCancelClicked"
+        android:text="Abbruch" />
 
     <!-- rest des screens ListView zur dynamischen Anzeige von
         Nutritions während der Eingabe im Feld "Lebensmittel"
     -->
     <ListView
         android:id="@+id/nutritionSearchResultListView"
-        android:layout_columnSpan="2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </ListView>
+        android:layout_height="match_parent"
+        android:layout_columnSpan="2"></ListView>
 
 </GridLayout>

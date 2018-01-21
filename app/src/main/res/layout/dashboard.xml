@@ -2,23 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:orientation="vertical" >
+    android:paddingRight="16dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:orientation="horizontal" >
+        android:paddingRight="16dp">
 
         <Button
             android:id="@+id/button_decDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-"
-            android:onClick="decDateClicked" />
+            android:onClick="decDateClicked"
+            android:text="-" />
 
         <TextView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/text_date"
@@ -30,8 +30,8 @@
             android:id="@+id/button_incDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+"
-            android:onClick="incDateClicked" />
+            android:onClick="incDateClicked"
+            android:text="+" />
 
     </LinearLayout>
 
@@ -39,86 +39,82 @@
         android:id="@+id/button_addNutritionEntry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="sample: Eintragen\n1234 kCal"
-        android:onClick="addNutritionEntryClicked" />
+        android:onClick="addNutritionEntryClicked"
+        android:text="sample: Eintragen\n1234 kCal" />
 
     <Button xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/button_showSaldo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="sample: Verfügbar\n3321 kCal"
-        android:onClick="showSaldoClicked" />
+        android:onClick="showSaldoClicked"
+        android:text="sample: Verfügbar\n3321 kCal" />
 
     <Button xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/button_addActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="sample: Aktivitaet\n 228 kCal"
-        android:onClick="addActivityClicked" />
+        android:onClick="addActivityClicked"
+        android:text="sample: Aktivitaet\n 228 kCal" />
 
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
         <TableRow>
 
-        <TextView
-            android:id="@+id/somedummy"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:text=""
-            />
-        <TextView
-            android:id="@+id/sumkcal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="10dip"
-            android:textSize="16dip"
-            android:textStyle="bold"
-            android:text="499kCal" >
-        </TextView>
+            <TextView
+                android:id="@+id/somedummy"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:text="" />
 
-        <TextView
-            android:id="@+id/sumfat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="10dip"
-            android:textSize="16dip"
-            android:textStyle="bold"
-            android:text="117,3g" >
-        </TextView>
+            <TextView
+                android:id="@+id/sumkcal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="10dip"
+                android:text="499kCal"
+                android:textSize="16dip"
+                android:textStyle="bold"></TextView>
 
-        <TextView
-            android:id="@+id/sumcarbo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="10dip"
-            android:textSize="16dip"
-            android:textStyle="bold"
-            android:text="168,5g" >
-        </TextView>
-        <TextView
-            android:id="@+id/sumprotein"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="10dip"
-            android:textSize="16dip"
-            android:textStyle="bold"
-            android:text="116,2g" >
-        </TextView>
+            <TextView
+                android:id="@+id/sumfat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="10dip"
+                android:text="117,3g"
+                android:textSize="16dip"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/sumcarbo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="10dip"
+                android:text="168,5g"
+                android:textSize="16dip"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/sumprotein"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="10dip"
+                android:text="116,2g"
+                android:textSize="16dip"
+                android:textStyle="bold"></TextView>
         </TableRow>
     </TableLayout>
 
     <ListView
         android:id="@+id/nutritionEntryList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </ListView>
+        android:layout_height="wrap_content"></ListView>
 
-    </LinearLayout>
+</LinearLayout>
