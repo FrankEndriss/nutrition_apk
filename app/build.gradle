@@ -28,5 +28,12 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:26.+'
     compile 'org.jetbrains:annotations-java5:15.0'
+    // sqldroid for jdbc support of sqLite database, used by Flyway
+    compile 'org.sqldroid:sqldroid:1.0.3'
+    // https://mvnrepository.com/artifact/org.flywaydb/flyway-core
+    // NOTE 5.0.6 does not work with sqldroid
+    // compile group: 'org.flywaydb', name: 'flyway-core', version: '5.0.6'
+    compile group: 'org.flywaydb', name: 'flyway-core', version: '4.2.0'
+
     testCompile 'junit:junit:4.12'
 }

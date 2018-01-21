@@ -56,19 +56,25 @@
         android:text="sample: Aktivitaet\n 228 kCal"
         android:onClick="addActivityClicked" />
 
-    <GridLayout
-        android:layout_width="match_parent"
+    <TableLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:rowCount="1"
-        android:columnCount="5"
+        android:orientation="horizontal"
         >
-        <Space />
+        <TableRow>
+
+        <TextView
+            android:id="@+id/somedummy"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:text=""
+            />
         <TextView
             android:id="@+id/sumkcal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_row="0"
-            android:layout_column="1"
+            android:layout_weight="1"
             android:paddingLeft="10dip"
             android:textSize="16dip"
             android:textStyle="bold"
@@ -79,8 +85,7 @@
             android:id="@+id/sumfat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_row="0"
-            android:layout_column="2"
+            android:layout_weight="1"
             android:paddingLeft="10dip"
             android:textSize="16dip"
             android:textStyle="bold"
@@ -91,8 +96,7 @@
             android:id="@+id/sumcarbo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_row="0"
-            android:layout_column="3"
+            android:layout_weight="1"
             android:paddingLeft="10dip"
             android:textSize="16dip"
             android:textStyle="bold"
@@ -102,14 +106,14 @@
             android:id="@+id/sumprotein"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_row="0"
-            android:layout_column="4"
+            android:layout_weight="1"
             android:paddingLeft="10dip"
             android:textSize="16dip"
             android:textStyle="bold"
             android:text="116,2g" >
         </TextView>
-    </GridLayout>
+        </TableRow>
+    </TableLayout>
 
     <ListView
         android:id="@+id/nutritionEntryList"
