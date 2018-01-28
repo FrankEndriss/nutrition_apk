@@ -20,7 +20,7 @@ import java.util.Set;
 //@Component(value="dataRepository")
 //@ManagedBean(name="dataRepository")
 //@ApplicationScoped
-public class DataRepository {
+public class DataRepository implements IDataRepository {
     private final static Comparator<Food> foodNameComparator = new Comparator<Food>() {
         @Override
         public int compare(final Food o1, final Food o2) {
@@ -44,6 +44,7 @@ public class DataRepository {
      * @param query  Query string
      * @param result target
      */
+    @Override
     public void searchFoods(String query, ResultCallback<Food> result) {
 
         stopSearch = true;
@@ -54,7 +55,7 @@ public class DataRepository {
     }
 
     /**
-     * searches for foods matching query, placing the result
+     * Searches for foods matching query, placing the result
      * in result. Ther query can be stopped by setting stopSearch to true.
      *
      * @param query
@@ -126,6 +127,7 @@ public class DataRepository {
         return ret;
     }
 
+    @Override
     public Optional<Food> getFoodByName(final String name) {
         for (final Food food : sampleData.foods) {
             if (food.getName().equals(name))
@@ -134,14 +136,17 @@ public class DataRepository {
         return Optional.empty();
     }
 
+    @Override
     public void createFood(final Food food) {
         sampleData.foods.add(food);
     }
 
+    @Override
     public void updateFood(final Food food) {
         throw new RuntimeException("not implemented yet");
     }
 
+    @Override
     public List<NutritionListEntry> getNutritionListEntries(final Date day) {
         final SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
         final String dayStr = format.format(day);
@@ -154,20 +159,19 @@ public class DataRepository {
         return ret;
     }
 
+    @Override
     public void createNutritionListEntry(final NutritionListEntry nut) {
         sampleData.sampleNutritions.add(nut);
     }
 
+    @Override
     public void updateNutritionListEntry(final NutritionListEntry nut) {
         throw new RuntimeException("not implemented yet");
     }
 
+    @Override
     public void deleteNutritionListEntry(final NutritionListEntry ent) {
         throw new RuntimeException("not implemented yet");
-    }
-
-    public interface ResultCallback<T> {
-        void add(T resultObject);
     }
 
 }

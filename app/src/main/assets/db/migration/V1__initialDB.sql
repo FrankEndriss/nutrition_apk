@@ -13,6 +13,6 @@ CREATE TABLE food(
 CREATE TABLE nutrition(
     id              CHAR(36) PRIMARY KEY NOT NULL,
     food_id         CHAR(36) NOT NULL REFERENCES food,
-    ts              DATETIME NOT NULL DEFAULT CURRENT,
+    ts              CHAR(16) NOT NULL, -- "YYYY-MM-DD HH:mm"
     amount_g        DECIMAL(7,1) NOT NULL
 );

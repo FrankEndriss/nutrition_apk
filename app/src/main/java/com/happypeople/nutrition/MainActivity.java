@@ -15,11 +15,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.happypeople.nutrition.model.NutritionListEntry;
+import com.happypeople.nutrition.persistence.IDataRepository;
 
 import org.flywaydb.core.Flyway;
 import org.flywaydb.core.api.android.ContextHolder;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         final String dbPath = db.getPath();
         flyway.setDataSource("jdbc:sqlite:" + dbPath, "", "");
         flyway.migrate();
+        db.close();
     }
 
     @Override
@@ -156,7 +159,12 @@ public class MainActivity extends AppCompatActivity {
      */
     private void onDataChange() {
         updateCurrentDateField();
-        updateNutritionEntryList();
+        try {
+            updateNutritionEntryList();
+        } catch (ParseException e) {
+            // TODO show error dialog instead of swallowing that exception
+            e.printStackTrace();
+        }
     }
 
     private void updateCurrentDateField() {
@@ -164,9 +172,13 @@ public class MainActivity extends AppCompatActivity {
         dateField.setText(dateFormat.format(currentDate.getTime()));
     }
 
-    private void updateNutritionEntryList() {
+    private IDataRepository getDataRepository() {
+        return getApp().getDataRepository(this);
+    }
+
+    private void updateNutritionEntryList() throws ParseException {
         listAdapterModel.clear();
-        listAdapterModel.addAll(getApp().getDataRepository().getNutritionListEntries(currentDate.getTime()));
+        listAdapterModel.addAll(getDataRepository().getNutritionListEntries(currentDate.getTime()));
         nutritionListAdapter.notifyDataSetChanged();
         updateSumFields(listAdapterModel);
     }

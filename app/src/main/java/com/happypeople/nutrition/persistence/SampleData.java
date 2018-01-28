@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Some sample data for testing.
@@ -69,6 +70,6 @@ class SampleData {
     private static Food mkFood(final String name, final int kcalPer100g,
                                final double fatGrams, final double carboGrams, final double sugarGrams, final double proteinGrams, final double defaultAmount) {
 
-        return new Food(name, kcalPer100g, fatGrams, carboGrams, sugarGrams, proteinGrams, defaultAmount);
+        return new Food(UUID.randomUUID().toString(), name, kcalPer100g, fatGrams, carboGrams, sugarGrams, proteinGrams, defaultAmount);
     }
 }

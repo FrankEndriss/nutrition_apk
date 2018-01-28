@@ -7,6 +7,8 @@ package com.happypeople.nutrition.model;
  */
 public class Food {
 
+    private String id;
+
     private final String name;
     private final int kCalPer100g;
     private final double fatPer100g;
@@ -15,7 +17,8 @@ public class Food {
     private final double proteinPer100g;
     private final double defaultAmount;
 
-    public Food(final String name, final int kCalPer100g, final double fatPer100g, final double carboPer100g, final double sugarPer100g, final double proteinPer100g, final double defaultAmount) {
+    public Food(final String id, final String name, final int kCalPer100g, final double fatPer100g, final double carboPer100g, final double sugarPer100g, final double proteinPer100g, final double defaultAmount) {
+        this.id=id;
         this.name = name;
         this.kCalPer100g = kCalPer100g;
         this.fatPer100g = fatPer100g;
@@ -24,6 +27,11 @@ public class Food {
         this.proteinPer100g = proteinPer100g;
         this.defaultAmount = defaultAmount;
     }
+
+    /**
+     * @return technical ID of entity
+     */
+    public String getId() { return id; }
 
     /**
      * @return Name of this food, acts as ID.

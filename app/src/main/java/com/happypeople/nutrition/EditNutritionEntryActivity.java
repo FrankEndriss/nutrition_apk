@@ -16,6 +16,7 @@ import com.happypeople.nutrition.model.Food;
 import com.happypeople.nutrition.model.FoodAmount;
 import com.happypeople.nutrition.model.NutritionListEntry;
 import com.happypeople.nutrition.persistence.DataRepository;
+import com.happypeople.nutrition.persistence.IDataRepository;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
@@ -144,7 +145,7 @@ public class EditNutritionEntryActivity extends AppCompatActivity {
                 // TODO do this async
                 listAdapterModel.clear();
                 nutritionSearchResultAdapter.notifyDataSetChanged();
-                getApp().getDataRepository().searchFoods(query, new DataRepository.ResultCallback<Food>() {
+                getDataRepository().searchFoods(query, new DataRepository.ResultCallback<Food>() {
                     @Override
                     public void add(Food resultObject) {
                         listAdapterModel.add(resultObject);
@@ -159,6 +160,9 @@ public class EditNutritionEntryActivity extends AppCompatActivity {
         checkAndSetSaveButtonState();
     }
 
+    private IDataRepository getDataRepository() {
+        return getApp().getDataRepository(this);
+    }
     /**
      * @return the entered amount or null if nothing usefull available
      */
@@ -200,7 +204,7 @@ public class EditNutritionEntryActivity extends AppCompatActivity {
                 new Date(), food, new FoodAmount(amount.intValue(), FoodAmount.FoodUnit.GRAM));
 
         // persist the data
-        getApp().getDataRepository().createNutritionListEntry(entry);
+        getDataRepository().createNutritionListEntry(entry);
 
         // and switch back to caller
         finish();

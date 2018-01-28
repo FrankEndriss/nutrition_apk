@@ -1,8 +1,11 @@
 package com.happypeople.nutrition;
 
 import android.app.Application;
+import android.content.Context;
 
+import com.happypeople.nutrition.persistence.IDataRepository;
 import com.happypeople.nutrition.persistence.DataRepository;
+import com.happypeople.nutrition.persistence.SQLiteDataRepository;
 
 
 /**
@@ -15,10 +18,13 @@ import com.happypeople.nutrition.persistence.DataRepository;
  */
 public class NutritionApp extends Application implements NutritionAppContext {
 
-    private DataRepository dataRepository = new DataRepository();
+    private IDataRepository dataRepository;
 
     @Override
-    public DataRepository getDataRepository() {
+    public IDataRepository getDataRepository(Context context) {
+        if(dataRepository==null)
+            dataRepository= new SQLiteDataRepository(context);
+
         return dataRepository;
     }
 }
